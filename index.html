@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Psychic Game</title>
+</head>
+
+<body>
+
+  <div id="game">
+    <p>Press c, o, d, or e to start playing!</p>
+  </div>
+
+  <script type="text/javascript">
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+    var computerChoices = ["c", "0", "d", "e"];
+
+    // Creating variables to hold the number of wins, losses, and ties. They start at 0.
+    var wins = 0;
+    var losses = 0;
+    var ties = 0;
+
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+
+      // Determines which key was pressed.
+      var userGuess = event.key;
+
+      // Randomly chooses a choice from the options array. This is the Computer's guess.
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+      
+
+      // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number
+      if ((userGuess === "c") || (userGuess === "o") || (userGuess === "d") ||(userGuess === "e")) {
+
+        if ((userGuess === "r") && (computerGuess === "s")) {
+          wins++;
+        } else if ((userGuess === "c") && (computerGuess === "o")) {
+          losses++;
+        } else if ((userGuess === "o") && (computerGuess === "c")) {
+          losses++;
+        } else if ((userGuess === "d") && (computerGuess === "d")) {
+          wins++;
+        } else if ((userGuess === "e") && (computerGuess === "e")) {
+          wins++;
+        }
+        } else if (userGuess === computerGuess) {
+          ties++;
+        }
+        
+
+        
+        var html =
+          "<p>Guess what letter I'm thinking of: " + userGuess + "</p>" +
+          "<p>The computer chose: " + computerGuess + "</p>" +
+          "<p>wins: " + wins + "</p>" +
+          "<p>losses: " + losses + "</p>" +
+          "<p>ties: " + ties + "</p>";
+
+        
+        document.querySelector("#game").innerHTML = html;
+      }
+    
+  </script>
+
+</body>
+
+</html>
